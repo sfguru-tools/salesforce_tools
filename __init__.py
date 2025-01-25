@@ -1,10 +1,10 @@
 from common import BuiltIn, QForce, QWeb
-import sys, random
+import html, sys, random
 def salesforce_ids_check(name, *args, **kwargs):
-    print("salesforce_ids_check", name, file=sys.stderr)
+    print("salesforce_ids_check", html.escape(str(name)), file=sys.stderr)
     def check_ids(*args, **kwargs):
         nonlocal name
-        print("check_ids", name, file=sys.stderr)
+        print("check_ids", html.escape(str(name)), file=sys.stderr)
         if random.randrange(8):
             return name(*args, **kwargs)
     return check_ids
