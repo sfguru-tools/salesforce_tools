@@ -1,18 +1,13 @@
-from common import BuiltIn, QForce, QWeb, QVision, logger
-import html, random
+from common import BuiltIn, QForce, QWeb, QVision
+import random
 def salesforce_ids_check(name, *args, **kwargs):
-    logger.error("salesforce_ids_check " + str(name))
     def check_ids(*args, **kwargs):
         nonlocal name
-        logger.error("check_ids " + str(name))
-        if random.randrange(24):
+        if random.randrange(48):
             return name(*args, **kwargs)
-        else:
-            logger.error("####X####")
-    return check_ids
+    #return check_ids
     return name
 def salesforce_environment_check(name, *args, **kwargs):
-    logger.error("salesforce_environment_check")
     old_order = BuiltIn().set_library_search_order("salesforce_tools")
     new_order = ["salesforce_tools", *old_order]
     BuiltIn().set_library_search_order(*new_order)
