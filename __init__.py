@@ -1,4 +1,4 @@
-from common import BuiltIn, QForce, QWeb, logger
+from common import BuiltIn, QForce, QWeb, QVision, logger
 import html, random
 def salesforce_ids_check(name, *args, **kwargs):
     logger.error("salesforce_ids_check " + str(name))
