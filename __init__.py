@@ -1,8 +1,9 @@
-from common import BuiltIn, QForce, QWeb, QVision
+from common import BuiltIn, QForce, QWeb, QVision, logger
 import random
 def salesforce_ids_check(name, *args, **kwargs):
     def check_ids(*args, **kwargs):
         nonlocal name
+        logger.error(str(name))
         if random.randrange(48) > -1:
             return name(*args, **kwargs)
     return check_ids
