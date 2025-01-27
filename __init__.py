@@ -3,9 +3,9 @@ import random
 def salesforce_ids_check(name, *args, **kwargs):
     def check_ids(*args, **kwargs):
         nonlocal name
-        if random.randrange(48):
+        if random.randrange(48) > -1:
             return name(*args, **kwargs)
-    #return check_ids
+    return check_ids
     return name
 def salesforce_environment_check(name, *args, **kwargs):
     old_order = BuiltIn().set_library_search_order("salesforce_tools")
