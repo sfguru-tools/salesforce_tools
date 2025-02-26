@@ -48,9 +48,9 @@ def ordersQuery(accountIds, serviceAccountIdMapping):
     return ordersDict, records
 
 def assetsQuery(accountIds, serviceAccountIdMapping):
-    assetsResult = QForce().query_records(f"SELECT Id, CreatedDate, AccountId, Account.Name, Account.CreatedDate, vlocity_cmt__ServiceAccountId__c FROM Asset WHERE vlocity_cmt__ProvisioningStatus__c = 'Active' AND vlocity_cmt__ServiceAccountId__c IN {accountIds}")
+    records = QForce().query_records(f"SELECT Id, CreatedDate, AccountId, Account.Name, Account.CreatedDate, vlocity_cmt__ServiceAccountId__c FROM Asset WHERE vlocity_cmt__ProvisioningStatus__c = 'Active' AND vlocity_cmt__ServiceAccountId__c IN {accountIds}")
     assetsDict = dict()
-    for asset in assetsResult["records"]:
+    for asset in records["records"]:
         assetInfo = f"{asset['Id']} ({asset['CreatedDate']})"
         saMapping = serviceAccountIdMapping[asset["vlocity_cmt__ServiceAccountId__c"]]
         if saMapping in assetsDict:
@@ -62,4 +62,4 @@ def assetsQuery(accountIds, serviceAccountIdMapping):
             mappedDict = dict()
             assetsDict[saMapping] = mappedDict
         mappedDict[asset["AccountId"]] = [asset["Account"]["CreatedDate"], asset["Account"]["Name"], assetInfo]
-    return assetsDict, assetsResult
+    return assetsDict, records
