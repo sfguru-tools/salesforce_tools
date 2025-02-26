@@ -1,5 +1,4 @@
 from common import BuiltIn, QForce, QWeb, QVision
-from robot.api import logger
 import random
 
 def salesforce_ids_check(name, *args, **kwargs):
