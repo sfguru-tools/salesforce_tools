@@ -54,7 +54,7 @@ def assetsQuery(accountIds, serviceAccountIdMapping):
         saMapping = serviceAccountIdMapping[asset["vlocity_cmt__ServiceAccountId__c"]]
         if saMapping in assetsDict:
             mappedDict = assetsDict[saMapping]
-            if asset["AccountId"] in numOnlyDict:
+            if asset["AccountId"] in mappedDict:
                 mappedDict[asset["AccountId"]].append(assetInfo)
                 continue
         else:
